@@ -1,0 +1,16 @@
+{
+  "name": "keo_test",
+  "version": "1.0.0",
+  "description": "resolving keo test",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "init_jest": "jest --init"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.1.2"
+  }
+}
