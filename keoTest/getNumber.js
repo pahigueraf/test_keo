@@ -29,6 +29,9 @@ async function getNumber(event) {
     console.timeEnd("start");
     return {
       statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         result: number,
       }),
@@ -37,6 +40,9 @@ async function getNumber(event) {
     console.log(error);
     return {
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error,
       }),

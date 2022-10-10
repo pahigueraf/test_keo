@@ -13,6 +13,9 @@ async function getStats(event) {
 
     return {
       statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         count,
         total,
@@ -23,6 +26,9 @@ async function getStats(event) {
     console.log(error);
     return {
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error,
       }),

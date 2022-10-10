@@ -150,6 +150,9 @@ describe("testing getNumber", () => {
     });
     expect(result).toEqual({
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error:
           "Cannot process this array. There is a NaN element or a number out of the range",
@@ -162,6 +165,9 @@ describe("testing getNumber", () => {
     });
     expect(result).toEqual({
       statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         result: 1,
       }),
@@ -174,6 +180,9 @@ describe("testing getNumber", () => {
     });
     expect(result).toEqual({
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error: "Cannot process this array by max length",
       }),
@@ -186,6 +195,9 @@ describe("testing getNumber", () => {
     });
     expect(result).toEqual({
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error:
           "Cannot process this array. There is a NaN element or a number out of the range",
@@ -199,6 +211,9 @@ describe("testing getNumber", () => {
     });
     expect(result).toEqual({
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error:
           "The body must have a property called 'array' and the value must be an array",
@@ -212,6 +227,9 @@ describe("testing getNumber", () => {
     });
     expect(result).toEqual({
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error:
           "The body must have a property called 'array' and the value must be an array",

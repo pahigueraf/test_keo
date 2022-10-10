@@ -58,6 +58,9 @@ describe("testing getStats", () => {
     });
     expect(result).toEqual({
       statusCode: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         count: 4,
         total: 7,
@@ -73,6 +76,9 @@ describe("testing getStats", () => {
     });
     expect(result).toEqual({
       statusCode: 401,
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         error: "Cannot get stats for a NaN type",
       }),
