@@ -5,11 +5,13 @@ const crypto = require("crypto");
 async function getNumber(event) {
   console.log(event);
   try {
-    const dynamoDb = new AWS.DynamoDB.DocumentClient();
     console.time("start");
     const body = JSON.parse(event.body);
+    if (!body.array || !Array.isArray(body.array))
+      throw "The body must have a property called 'array' and the value must be an array";
     if (body.array.length > 100000)
       throw "Cannot process this array by max length";
+    const dynamoDb = new AWS.DynamoDB.DocumentClient();
     const hash = crypto.createHash("sha512");
     const data = hash.update(JSON.stringify(body.array), "utf-8");
     const generatedHash = data.digest("hex");

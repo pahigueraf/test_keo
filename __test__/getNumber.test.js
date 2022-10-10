@@ -192,4 +192,30 @@ describe("testing getNumber", () => {
       }),
     });
   });
+
+  test("error ", async () => {
+    const result = await getNumber({
+      body: JSON.stringify({ array: -5 }),
+    });
+    expect(result).toEqual({
+      statusCode: 401,
+      body: JSON.stringify({
+        error:
+          "The body must have a property called 'array' and the value must be an array",
+      }),
+    });
+  });
+
+  test("error ", async () => {
+    const result = await getNumber({
+      body: JSON.stringify({ arrayTest: -5 }),
+    });
+    expect(result).toEqual({
+      statusCode: 401,
+      body: JSON.stringify({
+        error:
+          "The body must have a property called 'array' and the value must be an array",
+      }),
+    });
+  });
 });
