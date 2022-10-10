@@ -7,9 +7,11 @@
     "test": "jest --coverage",
     "init_jest": "jest --init"
   },
-  "author": "",
+  "author": "Pedro Higuera",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "aws-sdk": "^2.1231.0"
+  },
   "devDependencies": {
     "jest": "^29.1.2"
   }

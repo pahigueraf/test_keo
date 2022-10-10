@@ -1,0 +1,48 @@
+service: keoTest
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    DYNAMODB_COUNTER_TABLE: ${self:service}-counterTable-${sls:stage}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:PutItem"
+        - "dynamodb:Get*"
+        - "dynamodb:Scan*"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:DeleteItem"
+      Resource: arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:service}-counterTable-${sls:stage}
+
+functions:
+  getNumber:
+    handler: getNumber.getNumber
+    events:
+      - httpApi:
+          path: /smallest
+          method: post
+  getStats:
+    handler: getStats.getStats
+    events:
+      - httpApi:
+          path: /stats/{number}
+          method: get
+          request:
+            parameters:
+              paths:
+                number: true
+resources:
+  Resources:
+    CustomerTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        BillingMode: PAY_PER_REQUEST
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        TableName: ${self:service}-counterTable-${sls:stage}
